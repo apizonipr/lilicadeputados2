@@ -12,17 +12,16 @@ with col1:
     partido_sel = st.selectbox("Partido:", ["Todos"] + lista_partidos)
 
 with col2:
-    # Ajuste 'sexo' para o nome exato da coluna no seu CSV (ex: 'genero', 'Sexo')
-    lista_sexo = sorted(df['sexo'].unique().tolist())
-    sexo_sel = st.selectbox("Sexo:", ["Todos"] + lista_sexo)
+    lista_genero = sorted(df['genero'].unique().tolist())
+    genero_sel = st.selectbox("Genero:", ["Todos"] + lista_genero)
     
 df_filtrado = df.copy()
 
 if partido_sel != "Todos":
     df_filtrado = df_filtrado[df_filtrado['partido'] == partido_sel]
 
-if sexo_sel != "Todos":
-    df_filtrado = df_filtrado[df_filtrado['sexo'] == sexo_sel]
+if genero_sel != "Todos":
+    df_filtrado = df_filtrado[df_filtrado['genero'] == genero_sel]
 
 st.write(f"Encontrados **{len(df_filtrado)}** deputados com esses critérios.")
 st.dataframe(df_filtrado, use_container_width=True)
