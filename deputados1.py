@@ -22,6 +22,6 @@ if partido_sel != "Todos":
 
 if sexo_sel != "Todos":
     df_filtrado = df_filtrado[df_filtrado['sexo'] == sexo_sel]
-    ---
+    
 st.write(f"Encontrados **{len(df_filtrado)}** deputados com esses critérios.")
 st.dataframe(df_filtrado, use_container_width=True)
