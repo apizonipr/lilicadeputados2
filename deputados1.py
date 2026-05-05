@@ -4,8 +4,6 @@ import pandas as pd
 df = pd.read_csv('deputados_2022.csv')
 st.dataframe(df)
 
-st.set_page_config(page_title="Consulta de Deputados", layout="wide")
-
 def carregar_dados():
     # Substitua 'seuarquivo.csv' pelo nome real do seu arquivo
     df = pd.read_csv('deputados_2022.csv')
