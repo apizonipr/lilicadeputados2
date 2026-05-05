@@ -3,6 +3,8 @@ import pandas as pd
 
 df = pd.read_csv('deputados_2022.csv')
 
+col1, col2 = st.columns(2)
+
 st.title("🏛️ Consulta de Deputados por Partido")
 
 with col1:
