@@ -4,13 +4,6 @@ import pandas as pd
 df = pd.read_csv('deputados_2022.csv')
 st.dataframe(df)
 
-def carregar_dados():
-    # Substitua 'seuarquivo.csv' pelo nome real do seu arquivo
-    df = pd.read_csv('deputados_2022.csv')
-    return df
-
-df = carregar_dados()
-
 st.title("🏛️ Consulta de Deputados por Partido")
 
 lista_partidos = sorted(df['partido'].unique().tolist()) 
