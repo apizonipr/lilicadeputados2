@@ -5,20 +5,24 @@ df = pd.read_csv('deputados_2022.csv')
 
 st.title("🏛️ Consulta de Deputados por Partido")
 
-lista_partidos = sorted(df['partido'].unique().tolist()) 
+with col1:
+    lista_partidos = sorted(df['partido'].unique().tolist())
+    partido_sel = st.selectbox("Partido:", ["Todos"] + lista_partidos)
 
-st.sidebar.header("Filtros")
-partido_selecionado = st.sidebar.selectbox(
-    "Escolha um partido para filtrar:",
-    ["Todos"] + lista_partidos
-)
+with col2:
+    # Ajuste 'sexo' para o nome exato da coluna no seu CSV (ex: 'genero', 'Sexo')
+    lista_sexo = sorted(df['sexo'].unique().tolist())
+    sexo_sel = st.selectbox("Sexo:", ["Todos"] + lista_sexo)
 
-if partido_selecionado != "Todos":
-    df_filtrado = df[df['partido'] == partido_selecionado]
-else:
-    df_filtrado = df
+# --- LÓGICA DE FILTRAGEM COMBINADA ---
+df_filtrado = df.copy()
 
-st.subheader(f"Resultados: {partido_selecionado}")
-st.write(f"Encontrados {len(df_filtrado)} deputados.")
+if partido_sel != "Todos":
+    df_filtrado = df_filtrado[df_filtrado['partido'] == partido_sel]
 
+if sexo_sel != "Todos":
+    df_filtrado = df_filtrado[df_filtrado['sexo'] == sexo_sel]
+
+# --- EXIBIÇÃO DOS RESULTADOS ---
+st.write(f"Encontrados **{len(df_filtrado)}** deputados com esses critérios.")
 st.dataframe(df_filtrado, use_container_width=True)
