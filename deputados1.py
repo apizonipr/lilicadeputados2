@@ -30,6 +30,9 @@ if sexo_sel != "Todos":
 if uf_sel != "Todos":
     df_filtrado = df_filtrado[df_filtrado['uf'] == uf_sel]
 
+if df_filtrado.empty:
+    st.warning("Nenhum deputado encontrado para essa combinação de filtros.")
+
 
     
 st.write(f"Encontrados **{len(df_filtrado)}** deputados com esses critérios.")
