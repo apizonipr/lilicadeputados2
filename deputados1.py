@@ -1,7 +1,8 @@
 import streamlit as st
 import pandas as pd
-df = pd.read_csv('deputados_2022.csv')
-st.dataframe(df)
+@st.cache_data
+def carregar_dados():
+    return pd.read_csv('seuarquivo.csv')
 
 st.title("🏛️ Consulta de Deputados por Partido")
 
